@@ -652,7 +652,9 @@
       // initialise custom theme
       this.setTheme(config("dark"));
 
-      grabFocus();
+      window.setTimeout(grabFocus, 340);
+      // grabFocus();
+
       hiddenInput.onblur = grabFocus;
 
       typeof cb === 'function' && window.setTimeout(cb, 340);
@@ -953,6 +955,7 @@
    * content being either a dom node, a string, or some instructions.
    */
   function init (content) {
+
     if (!instructions) {
 
       // plain string
@@ -972,9 +975,8 @@
 
       reader = new Reader();
       reader.onBackdropClick(close);
-      reader.onKeyDown(handleKeydown)
+      reader.onKeyDown(handleKeydown);
       reader.show();
-
       index = 0;
 
       setTimeout(toggleRunning, 500);
